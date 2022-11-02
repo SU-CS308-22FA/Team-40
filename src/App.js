@@ -9,7 +9,7 @@ function App() {
   const [password, setPassword] = useState("");
 
   const registerUser = () => {
-    Axios.post("http://team40.herokuapp.com/register", 
+    Axios.post("https://team40.herokuapp.com/register", 
     {
       username: username,
       email: email,
@@ -22,7 +22,7 @@ function App() {
   };
 
   const showUsers = () => {
-    Axios.get("http://team40.herokuapp.com/listuser").then(() => {
+    Axios.get("https://team40.herokuapp.com/listuser").then(() => {
       console.log("showuserlistuser")
     });
   };
