@@ -22,6 +22,12 @@ function App() {
     });
   };
 
+  const showUsers = () => {
+    Axios.get("http://127.0.0.1:8000/listuser").then(() => {
+      console.log("showuserlistuser")
+    });
+  };
+
 
   return (
     <div className="App">
@@ -35,7 +41,7 @@ function App() {
         />
         <label>Email:</label>
         <input 
-        type="text"
+        type="email"
         onChange={(event) => {
           setEmail(event.target.value);
         }}
@@ -62,6 +68,8 @@ function App() {
         }}
         />
         <button onClick={registerUser}>Sign Up</button>
+        <button onClick={showUsers}>Show Users</button>
+        
       </div>
     </div>
   );
