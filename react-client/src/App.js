@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import {useState} from "react"
 import Axios from 'axios'
@@ -10,7 +9,7 @@ function App() {
   const [password, setPassword] = useState("");
 
   const registerUser = () => {
-    Axios.post("http://127.0.0.1:8000/register", 
+    Axios.post("http://team40.herokuapp.com/register", 
     {
       username: username,
       email: email,
@@ -23,7 +22,7 @@ function App() {
   };
 
   const showUsers = () => {
-    Axios.get("http://127.0.0.1:8000/listuser").then(() => {
+    Axios.get("http://team40.herokuapp.com/listuser").then(() => {
       console.log("showuserlistuser")
     });
   };
