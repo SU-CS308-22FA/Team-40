@@ -5,7 +5,7 @@ from routers import users
  
 import os
 from fastapi_sqlalchemy import DBSessionMiddleware #middleware helper 
-
+from fastapi.middleware.cors import CORSMiddleware
 #Also it will be will be import load_dotenv to connect to our db 
 from dotenv import load_dotenv
 
@@ -14,6 +14,21 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 load_dotenv(os.path.join(BASE_DIR, ".env"))
 
 app = FastAPI()
+origins = [
+    "http://localhost.tiangolo.com",
+    "https://localhost.tiangolo.com",
+    "http://localhost",
+    "http://localhost:8080",
+    "http://localhost:3000"
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 #this is to access the db so any route can acccess the database session
 app.add_middleware(DBSessionMiddleware,
