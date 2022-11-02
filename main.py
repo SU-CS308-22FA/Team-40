@@ -21,6 +21,7 @@ origins = [
     "http://localhost:8080",
     "http://localhost:3000",
     "https://team40.herokuapp.com"
+    ".herokuapp.com"
 ]
 
 app.add_middleware(
