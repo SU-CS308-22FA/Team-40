@@ -14,16 +14,7 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 load_dotenv(os.path.join(BASE_DIR, ".env"))
 
 app = FastAPI()
-origins = [
-    "http://localhost.tiangolo.com",
-    "https://localhost.tiangolo.com",
-    "http://localhost",
-    "http://localhost:8080",
-    "http://localhost:3000",
-    "https://team40.herokuapp.com",
-    ".herokuapp.com",
-    ".team40.com"
-]
+origins = ["*"]
 
 app.add_middleware(
     CORSMiddleware,
