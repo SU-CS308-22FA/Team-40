@@ -1,8 +1,6 @@
 import './App.css';
 import {useState} from "react"
 import Axios from 'axios'
-import Register from './Register';
-import {BrowserRouter as Router, Route, Switch} from 'react'
 const Demo = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
