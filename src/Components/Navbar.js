@@ -5,9 +5,6 @@ import { Outlet, Link } from "react-router-dom";
 function Navbar(params) {
     const navRef = useRef();
 
-    const showNavBar = () => {
-        navRef.current.classList.toggle("responsive_nav");
-    }
     return(
         <><header>
             <h3>TPIBS</h3>
