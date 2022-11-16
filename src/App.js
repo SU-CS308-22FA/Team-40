@@ -1,26 +1,25 @@
-import './App.css';
-import Register from './Register';
-import Demo from './Demo';
-import Login from './Login';
-import Layout from "./Layout";
-import NoPage from "./NoPage";
+/* eslint-disable default-case */
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import {AuthProvider} from "./context/AuthProvider";
+import React from 'react';
+import Navbar from "./Components/Navbar"
+import Login from "./Pages/Login"
+import Register from "./Pages/Register"
+import Demo from "./Pages/Demo"
 
-function App() {
+function App(){
   return (
-    <AuthProvider>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route path="register" element={<Register />} />
-            <Route path="demo" element={<Demo />} />
-            <Route path="login" element={<Login />} />
-            <Route path="*" element={<NoPage />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
-    </AuthProvider>
+      <AuthProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Navbar />}>
+              <Route path="register" element={<Register />} />
+              <Route path="demo" element={<Demo />} />
+              <Route path="login" element={<Login />} />
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      </AuthProvider>    
   );
 }
 
