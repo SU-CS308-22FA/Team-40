@@ -9,6 +9,7 @@ export default class TeamTableRow extends Component {
                 <td>{this.props.obj.venue.city}</td>
                 <td>{this.props.obj.venue.name}</td>
                 <td>{this.props.obj.venue.capacity}</td>
+                
             </tr>
         );
     }

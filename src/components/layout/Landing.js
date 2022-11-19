@@ -41,7 +41,7 @@ class Landing extends Component {
                 Log In
               </Link>
             </div>
-            <div className="col s6">
+            <div className="col s6" style={{ margin: "40px 0 0 0" }}>
               <Link
                 to="/teams"
                 style={{
