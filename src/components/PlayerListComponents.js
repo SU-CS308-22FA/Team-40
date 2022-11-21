@@ -3,6 +3,7 @@ import axios from 'axios';
 import BootstrapTable from 'react-bootstrap-table-next';
 import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
 import filterFactory, { textFilter } from 'react-bootstrap-table2-filter';
+import paginationFactory, { PaginationProvider } from 'react-bootstrap-table2-paginator';
 
 export default class PlayerList extends Component {
   constructor(props) {
@@ -27,6 +28,7 @@ export default class PlayerList extends Component {
       })
   }
   render() {
+
     const columns = [{
       dataField: 'player.name',
       text: 'Name',
@@ -50,7 +52,8 @@ export default class PlayerList extends Component {
     }, {
       dataField: 'player.nationality',
       text: 'Nation',
-      sort: true
+      sort: true,
+      filter: textFilter({defaultValue: 'Turkey'})
     },
     {
         dataField: 'statistics[0].games.position',
@@ -75,7 +78,7 @@ export default class PlayerList extends Component {
 
     return (<div className="table-wrapper">
       
-      <BootstrapTable keyField='name' data={ this.state.players } columns={ columns } filter={ filterFactory() } />
+      <BootstrapTable keyField='name' data={ this.state.players } columns={ columns } filter={ filterFactory() }  pagination={ paginationFactory() } />
     </div>);
   }
 }
