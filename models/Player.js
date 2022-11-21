@@ -119,9 +119,11 @@ const NestedPlayerSchema = mongoose.Schema({
     penalty:PenaltySchema,
   });
   
+  
+
   const PlayerSchema = mongoose.Schema({
     player: NestedPlayerSchema,
-    statistics: StatisticsSchema
+    statistics: [StatisticsSchema]
   });
   
   module.exports = Player = mongoose.model("players", PlayerSchema);
