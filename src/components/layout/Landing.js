@@ -54,6 +54,21 @@ class Landing extends Component {
                 Teams List
               </Link>
             </div>
+
+            <div className="col s6" style={{ margin: "40px 0 0 0" }}>
+              <Link
+                to="/players"
+                style={{
+                  width: "140px",
+                  borderRadius: "3px",
+                  letterSpacing: "1.5px"
+                }}
+                className="btn btn-large waves-effect waves-light hoverable blue accent-3"
+              >
+                Players
+              </Link>
+            </div>    
+
           </div>
         </div>       
       </div>

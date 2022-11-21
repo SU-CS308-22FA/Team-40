@@ -14,6 +14,7 @@ import Login from "./components/auth/Login";
 import PrivateRoute from "./components/private-route/PrivateRoute";
 import Dashboard from "./components/dashboard/Dashboard";
 import TeamList from "./components/TeamListComponents";
+import PlayerList from "./components/PlayerListComponents";
 
 import "./App.css";
 
@@ -47,6 +48,7 @@ class App extends Component {
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/teams" component={TeamList} />
+            <Route exact path="/players" component={PlayerList} />
             <Switch>
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
             </Switch>
