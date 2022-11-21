@@ -33,12 +33,12 @@ export default class PlayerList extends Component {
       sort: true,
       filter: textFilter()
     }, {
-      dataField: 'statistics.team.name',
+      dataField: 'statistics[0].team.name',
       text: 'Club',
       sort: true,
     },
     {
-        dataField: 'statistics.league.name',
+        dataField: 'statistics[0].league.name',
         text: 'League',
         sort: true,
       },
@@ -53,22 +53,22 @@ export default class PlayerList extends Component {
       sort: true
     },
     {
-        dataField: 'statistics.games.position',
+        dataField: 'statistics[0].games.position',
         text: 'Position',
         sort: true
       },
     {
-        dataField: 'statistics.games.appearances',
+        dataField: 'statistics[0].games.appearances',
         text: 'Appear',
         sort: true
       },
       {
-        dataField: 'statistics.games.minutes',
+        dataField: 'statistics[0].games.minutes',
         text: 'Minutes',
         sort: true
       },
     {
-      dataField: 'statistics.games.rating',
+      dataField: 'statistics[0].games.rating',
       text: 'Rating',
       sort: true
     }];
