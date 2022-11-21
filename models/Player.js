@@ -51,7 +51,7 @@ const NestedPlayerSchema = mongoose.Schema({
     total: Number,
     on:Number,
 
-  });
+  }, { supressReservedKeysWarning: true });
   const GoalsSchema = mongoose.Schema({
     total:Number,
     conceded:Number,
@@ -110,9 +110,9 @@ const NestedPlayerSchema = mongoose.Schema({
     substitutes:SubstitutesSchema,
     shots:ShotSchema,
     goals:GoalsSchema,
-    passes:PassesSchema,
+    passes:PassesTeamSchema,
     tackles:TacklesSchema,
-    duels:DuelsSchema,
+    duels:DuelsTeamSchema,
     dribbles:DribblesSchema,
     fouls:FoulsSchema,
     cards:CardsSchema,
