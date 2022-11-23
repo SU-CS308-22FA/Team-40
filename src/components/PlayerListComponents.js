@@ -4,6 +4,7 @@ import BootstrapTable from 'react-bootstrap-table-next';
 import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
 import filterFactory, { textFilter } from 'react-bootstrap-table2-filter';
 import paginationFactory from 'react-bootstrap-table2-paginator';
+import 'react-bootstrap-table2-paginator/dist/react-bootstrap-table2-paginator.min.css';
 
 export default class PlayerList extends Component {
   constructor(props) {
@@ -46,12 +47,6 @@ export default class PlayerList extends Component {
       text: 'Club',
       sort: true,
     },
-    {
-        dataField: 'statistics[0].league.name',
-        text: 'League',
-        sort: true,
-      },
-    
      {
       dataField: 'player.age',
       text: 'Age',
@@ -67,6 +62,17 @@ export default class PlayerList extends Component {
         text: 'Position',
         sort: true
       },
+      {
+        dataField: 'statistics[0].cards.yellow',
+        text: 'Yellows',
+        sort: true,
+      },
+      {
+        dataField: 'statistics[0].cards.red',
+        text: 'Reds',
+        sort: true,
+      },
+
       {
         dataField: 'statistics[0].games.minutes',
         text: 'Minutes',
