@@ -29,9 +29,16 @@ export default class PlayerList extends Component {
   }
   render() {
 
-    const columns = [{
-      dataField: 'player.name',
-      text: 'Name',
+    const columns = [
+      {
+        dataField: 'player.firstname',
+        text: 'First Name',
+        sort: true,
+        filter: textFilter()
+      },
+      {
+      dataField: 'player.lastname',
+      text: 'Last Name',
       sort: true,
       filter: textFilter()
     }, {
@@ -58,11 +65,6 @@ export default class PlayerList extends Component {
     {
         dataField: 'statistics[0].games.position',
         text: 'Position',
-        sort: true
-      },
-    {
-        dataField: 'statistics[0].games.appearances',
-        text: 'Appear',
         sort: true
       },
       {
