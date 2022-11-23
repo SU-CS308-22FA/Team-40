@@ -29,6 +29,10 @@ export default class PlayerList extends Component {
       })
   }
   render() {
+    const defaultSorted = [{
+      dataField: 'statistics[0].games.rating', // if dataField is not match to any column you defined, it will be ignored.
+      order: 'desc' // desc or asc
+    }];
 
     const columns = [{
       dataField: 'player.firstname',
@@ -86,7 +90,7 @@ export default class PlayerList extends Component {
 
     return (<div className="table-wrapper">
       
-      <BootstrapTable keyField='name' data={ this.state.players } columns={ columns } filter={ filterFactory() }  pagination={ paginationFactory() } />
+      <BootstrapTable defaultSorted={defaultSorted} keyField='name' data={ this.state.players } columns={ columns } filter={ filterFactory() }  pagination={ paginationFactory() } />
     </div>);
   }
 }
