@@ -47,8 +47,18 @@ export default class PlayerList extends Component {
       sort: true,
     },
     {
-        dataField: 'statistics[0].league.name',
-        text: 'League',
+      dataField: 'player.nationality',
+      text: 'Nation',
+      sort: true,
+      filter: textFilter({defaultValue: 'Turkey'})
+    },{
+      dataField: 'statistics[0].cards.yellow',
+      text: 'Yellows',
+      sort: true,
+    },
+    {
+        dataField: 'statistics[0].cards.red',
+        text: 'Reds',
         sort: true,
       },
     
@@ -56,12 +66,7 @@ export default class PlayerList extends Component {
       dataField: 'player.age',
       text: 'Age',
       sort: true,
-    }, {
-      dataField: 'player.nationality',
-      text: 'Nation',
-      sort: true,
-      filter: textFilter({defaultValue: 'Turkey'})
-    },
+    }, 
     {
         dataField: 'statistics[0].games.position',
         text: 'Position',
