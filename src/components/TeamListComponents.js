@@ -76,7 +76,7 @@ export default class TeamList extends Component {
 
     return (<div className="table-wrapper">
       
-      <BootstrapTable keyField='name' data={ this.state.teams } columns={ columns } filter={ filterFactory() } id="table"  />
+      <BootstrapTable keyField='team.logo' data={ this.state.teams } columns={ columns } filter={ filterFactory() } id="table"  />
     </div>);
   }
 }
