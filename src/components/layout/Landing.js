@@ -4,10 +4,10 @@ import { Link } from "react-router-dom";
 class Landing extends Component {
   render() {
     return (
-      <div style={{ height: "75vh" }} className="container valign-wrapper">
+      <div style={{ height: "75vh" }} className="container valign-wrapper d-flex justify-content-center ">
         <div className="row">
           <div className="col s12 center-align">
-            <h4>
+            <h4 >
               <i className="material-icons">sports_soccer</i>
              <b> TPIBS</b> Turkish Players Incentive Bonus System
             </h4>
@@ -15,7 +15,7 @@ class Landing extends Component {
               See the stats of Turkish players in the Super Lig and compare them
             </p>
             <br />
-            <div className="col s6">
+            <div className="col s6 d-flex justify-content-center">
               <Link
                 to="/register"
                 style={{
@@ -23,12 +23,12 @@ class Landing extends Component {
                   borderRadius: "3px",
                   letterSpacing: "1.5px"
                 }}
-                className="btn btn-large waves-effect waves-light hoverable blue accent-3"
+                className="btn btn-large waves-effect waves-light hoverable blue accent-3 d-flex justify-content-center align-items-center"
               >
                 Register
               </Link>
             </div>
-            <div className="col s6">
+            <div className="col s6 d-flex justify-content-center">
               <Link
                 to="/login"
                 style={{
@@ -36,12 +36,12 @@ class Landing extends Component {
                   borderRadius: "3px",
                   letterSpacing: "1.5px"
                 }}
-                className="btn btn-large btn-flat waves-effect blue accent-3 white-text"
+                className="btn btn-large btn-flat waves-effect blue accent-3 white-text d-flex justify-content-center align-items-center"
               >
                 Log In
               </Link>
             </div>
-            <div className="col s6" style={{ margin: "40px 0 0 0" }}>
+            <div className="col s6 d-flex justify-content-center" style={{ margin: "40px 0 0 0" }}>
               <Link
                 to="/teams"
                 style={{
@@ -49,13 +49,13 @@ class Landing extends Component {
                   borderRadius: "3px",
                   letterSpacing: "1.5px"
                 }}
-                className="btn btn-large waves-effect waves-light hoverable blue accent-3"
+                className="btn btn-large waves-effect waves-light hoverable blue accent-3 d-flex justify-content-center align-items-center"
               >
                 Teams List
               </Link>
             </div>
 
-            <div className="col s6" style={{ margin: "40px 0 0 0" }}>
+            <div className="col s6 d-flex justify-content-center" style={{ margin: "40px 0 0 0" }}>
               <Link
                 to="/players"
                 style={{
@@ -63,7 +63,7 @@ class Landing extends Component {
                   borderRadius: "3px",
                   letterSpacing: "1.5px"
                 }}
-                className="btn btn-large waves-effect waves-light hoverable blue accent-3"
+                className="btn btn-large waves-effect waves-light hoverable blue accent-3 d-flex justify-content-center align-items-center"
               >
                 Players
               </Link>

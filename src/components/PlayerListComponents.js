@@ -12,7 +12,7 @@ export default class PlayerList extends Component {
       players: []
     };
     this.options = {
-      defaultSortName: 'name',  // default sort column name
+      defaultSortName: 'statistics[0].games.rating',  // default sort column name
       defaultSortOrder: 'desc'  // default sort order
     };
   }
@@ -30,11 +30,18 @@ export default class PlayerList extends Component {
   render() {
 
     const columns = [{
-      dataField: 'player.name',
-      text: 'Name',
+      dataField: 'player.firstname',
+      text: 'First Name',
       sort: true,
       filter: textFilter()
-    }, {
+    },
+    {
+      dataField: 'player.lastname',
+      text: 'Last Name',
+      sort: true,
+      filter: textFilter()
+    },
+    {
       dataField: 'statistics[0].team.name',
       text: 'Club',
       sort: true,
@@ -58,11 +65,6 @@ export default class PlayerList extends Component {
     {
         dataField: 'statistics[0].games.position',
         text: 'Position',
-        sort: true
-      },
-    {
-        dataField: 'statistics[0].games.appearances',
-        text: 'Appear',
         sort: true
       },
       {
