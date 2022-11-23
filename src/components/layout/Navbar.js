@@ -12,7 +12,7 @@ class Navbar extends Component {
               style={{
                 fontFamily: "monospace"
               }}
-              className="col s5 brand-logo center black-text"
+              className="col s5 brand-logo center black-text d-flex justify-content-center"
             >
               <i className="material-icons">sports_soccer</i>
               TPIBS
