@@ -15,7 +15,7 @@ import PrivateRoute from "./components/private-route/PrivateRoute";
 import Dashboard from "./components/dashboard/Dashboard";
 import TeamList from "./components/TeamListComponents";
 import PlayerList from "./components/PlayerListComponents";
-
+import TeamPage from "./components/TeamPage";
 import "./App.css";
 
 // Check for token to keep user logged in
@@ -48,6 +48,7 @@ class App extends Component {
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/teams" component={TeamList} />
+            <Route path="/teams/:teamid" component={TeamPage} />
             <Route exact path="/players" component={PlayerList} />
             <Switch>
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
