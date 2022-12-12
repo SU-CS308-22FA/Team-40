@@ -12,6 +12,14 @@ const validateLoginInput = require("../../validation/login");
 // Load User model
 const User = require("../../models/User");
 
+router.get('/:userid', (req, resp)=>{
+  User.findById( {_id: req.params["userid"]}).then(data => {
+      console.log("Find by id for user is called")
+      resp.json(data)
+  }).catch(e => {
+      resp.json({message : e})
+  })
+})
 // @route POST api/users/register
 // @desc Register user
 // @access Public
