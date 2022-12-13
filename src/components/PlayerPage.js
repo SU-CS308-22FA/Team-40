@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, BrowserRouter as Router, Route } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./PlayerPage.css";
 const PlayerPage = ({ match }) => {
   const {

@@ -40,16 +40,16 @@ export default TeamPage
 */
 
 import React, { useState, useEffect } from "react";
-import { Link, BrowserRouter as Router, Route } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./TeamPage.css";
-
-const TeamPage = ({ match }) => {
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+const TeamPage = (props) => {
   const {
     params: { teamid },
-  } = match;
+  } = props.match;
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState();
-
   useEffect(() => {
     fetch(`http://localhost:5000/api/teams/getteams/${teamid}`, {})
       .then((res) => res.json())
@@ -60,11 +60,16 @@ const TeamPage = ({ match }) => {
       })
       .catch((error) => console.log(error));
   }, [teamid]);
-
+  var name = "You are not logged in";
+    if (props.auth.user.name!= null) {
+      name = props.auth.user.name;
+    }
   return (
+    
     <div className="team-page">
       {!isLoading && (
         <>
+          <h1>Current User: {name}</h1>
           <div className="team-logo-name">
           <h1>Name: {data.team.name}</h1>
           <img src={data.team.logo} alt="Team logo" />
@@ -104,4 +109,14 @@ const TeamPage = ({ match }) => {
   );
 };
 
-export default TeamPage;
+TeamPage.propTypes = {
+  auth: PropTypes.object.isRequired
+}; 
+
+function mapStateToProps(state) {
+  return { auth: state.auth };
+} 
+export default connect(
+  mapStateToProps
+)(TeamPage);
+
