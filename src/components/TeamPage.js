@@ -76,7 +76,28 @@ const TeamPage = ({ match }) => {
           <h2>Capacity: {data.venue.capacity}</h2>
           <h2>Address: {data.venue.address}</h2>
           </div>
-          <Link to="/">Back to homepage</Link>
+          <Link
+            to="/"
+            style={{
+              width: "140px",
+              borderRadius: "3px",
+              letterSpacing: "1.5px",
+            }}
+            className="btn btn-large btn-flat waves-effect blue accent-3 white-text d-flex justify-content-center align-items-center"
+          >
+            Home
+          </Link>
+          <Link
+            to="/teams"
+            style={{
+              width: "140px",
+              borderRadius: "3px",
+              letterSpacing: "1.5px",
+            }}
+            className="btn btn-large btn-flat waves-effect blue accent-3 white-text d-flex justify-content-center align-items-center"
+          >
+            Teams
+          </Link>
         </>
       )}
     </div>
