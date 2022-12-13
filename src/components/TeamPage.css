@@ -1,0 +1,38 @@
+.team-page {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 2em;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;  /* center the container on the page */
+  max-width: 960px;  /* set a maximum width for the container */
+}
+.team-page h1 {
+  font-size: 2em;
+  margin-bottom: 0.5em;
+}
+
+.team-page img {
+  max-width: 100%;
+  margin-bottom: 1em;
+}
+
+.team-page h2 {
+  font-size: 1.5em;
+  margin-top: 0;
+  margin-bottom: 0.5em;
+}
+
+.team-page a {
+  font-size: 1.2em;
+  color: blue;
+  text-decoration: none;
+}
+
+.team-logo-name {
+  grid-column: 1 / span 1;
+}
+
+.team-info {
+  grid-column: 2 / span 1;
+}
