@@ -72,7 +72,7 @@ const TeamPage = ({ match }) => {
           <div className="team-info">
           <h2>Founded: {data.team.founded}</h2>
           <h2>Stadium Name: {data.venue.name}</h2>
-          <img src={data.venue.image} alt="Stadium image" />
+          <img src={data.venue.image} alt="Stadiumimage" />
           <h2>Capacity: {data.venue.capacity}</h2>
           <h2>Address: {data.venue.address}</h2>
           </div>
