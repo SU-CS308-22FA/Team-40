@@ -58,7 +58,7 @@ export default class TeamList extends Component {
       sort: true
     }, {
       dataField: 'team.id',
-      text: 'Go to Page',
+      text: 'Profile',
       sort: false,
       formatter: (rowContent, row) => {
         var teamLink = "http://localhost:3000/teams/"+ rowContent;
