@@ -7,6 +7,8 @@ const users = require("./routes/api/users");
 const teams = require("./routes/api/teams");
 const players = require("./routes/api/players");
 const games = require("./routes/api/games");
+const teamcomments = require("./routes/api/teamcomments");
+
 
 const app = express();
 var cors = require('cors');
@@ -42,6 +44,7 @@ app.use("/api/teams", teams);
 app.use("/api/users", users);
 app.use("/api/players", players);
 app.use("/api/games", games);
+app.use("/api/teamcomments", teamcomments);
 
 const port = process.env.PORT || 5000;
 
