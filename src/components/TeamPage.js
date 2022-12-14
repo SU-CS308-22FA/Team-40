@@ -6,6 +6,11 @@ import PropTypes from "prop-types";
 import { postTeamCommentsAPI, getSingleTeamCommentsAPI, deleteTeamCommentsAPI  } from '../actions/teamCommentActions'
 import CreateTeamComment from './CreateTeamComment';
 import TeamCommentTable from "./TeamCommentTable";
+/**
+ * Exporting team page component to create the a profile page for each team
+ * @param {*} props auth brings the jwt token info, username and userid, match brings the team data
+ * @returns Exporting TeamPage component
+ */
 const TeamPage = (props) => {
   const {
     params: { teamid },
