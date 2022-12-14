@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:5000/api/teamcomments"
+const API_URL = "https://backend308.onrender.com/api/teamcomments"
 export async function getTeamCommentsAPI(){
     return fetch(API_URL+'/getteamcomments')
     .then(resp => resp.json())
