@@ -1,70 +1,57 @@
-/*
 import React, { useState, useEffect } from "react";
-import { Link, BrowserRouter as Router, Route } from "react-router-dom";
-const TeamPage = ({ match }) => {
-    const {
-      params: { teamid },
-    } = match;
-    const [isLoading, setIsLoading] = useState(true);
-    const [data, setData] = useState();
-  
-    useEffect(() => {
-      fetch(`http://localhost:5000/api/teams/getteams/${teamid}`, {})
-        .then((res) => res.json())
-        .then((response) => {
-          setData(response);
-          setIsLoading(false);
-          console.log(`http://localhost:5000/api/teams/getteams/${teamid}`);
-        })
-        .catch((error) => console.log(error));
-    }, [teamid]);
-  
-    return (
-      <>
-        {!isLoading && (
-          <>
-            <h1>Name: {data.team.name}</h1>
-            <img src={data.team.logo}></img>
-            <h2>Founded: {data.team.founded}</h2>
-            <h2>Stadium Name: {data.venue.name}</h2>
-            <img src={data.venue.image}></img>
-            <h2>Capacity: {data.venue.capacity}</h2>
-            <h2>Address: {data.venue.address}</h2>
-            <Link to="/">Back to homepage</Link>
-          </>
-        )}
-      </>
-    );
-  };
-export default TeamPage
-*/
-
-import React, { useState, useEffect } from "react";
-import { Link, BrowserRouter as Router, Route } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./TeamPage.css";
-
-const TeamPage = ({ match }) => {
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { postTeamCommentsAPI, getSingleTeamCommentsAPI, deleteTeamCommentsAPI  } from '../actions/teamCommentActions'
+import CreateTeamComment from './CreateTeamComment';
+import TeamCommentTable from "./TeamCommentTable";
+const TeamPage = (props) => {
   const {
     params: { teamid },
-  } = match;
+  } = props.match;
+
+  const [comments, setComments] = useState([])
+  useEffect(() => {
+    getSingleTeamCommentsAPI(teamid).then(comments => setComments(comments))
+  }, [teamid]);
+
+  const addComment = (comment) => {
+    postTeamCommentsAPI(comment).then(data => {
+      setComments([...comments, data])
+    })
+  }
+
+  const deleteComment = (id) => {
+    deleteTeamCommentsAPI(id).then(data => {
+      if (data.deletedCount === 1) {
+        setComments(comments.filter(comment => comment._id !== id))
+      }
+    })
+  }
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState();
-
-  useEffect(() => {
+  useEffect((props) => {
     fetch(`http://localhost:5000/api/teams/getteams/${teamid}`, {})
       .then((res) => res.json())
       .then((response) => {
         setData(response);
         setIsLoading(false);
         console.log(`http://localhost:5000/api/teams/getteams/${teamid}`);
+        console.log(props);
       })
       .catch((error) => console.log(error));
   }, [teamid]);
-
+  var name = "You are not logged in";
+    if (props.auth.user.name!= null) {
+      name = props.auth.user.name;
+    }
   return (
+    
     <div className="team-page">
       {!isLoading && (
         <>
+          <h1>Current User: {name}</h1>
           <div className="team-logo-name">
           <h1>Name: {data.team.name}</h1>
           <img src={data.team.logo} alt="Team logo" />
@@ -72,15 +59,50 @@ const TeamPage = ({ match }) => {
           <div className="team-info">
           <h2>Founded: {data.team.founded}</h2>
           <h2>Stadium Name: {data.venue.name}</h2>
-          <img src={data.venue.image} alt="Stadium image" />
+          <img src={data.venue.image} alt="Stadiumimage" />
           <h2>Capacity: {data.venue.capacity}</h2>
           <h2>Address: {data.venue.address}</h2>
           </div>
-          <Link to="/">Back to homepage</Link>
+          <Link
+            to="/"
+            style={{
+              width: "140px",
+              borderRadius: "3px",
+              letterSpacing: "1.5px",
+            }}
+            className="btn btn-large btn-flat waves-effect blue accent-3 white-text d-flex justify-content-center align-items-center"
+          >
+            Home
+          </Link>
+          <Link
+            to="/teams"
+            style={{
+              width: "140px",
+              borderRadius: "3px",
+              letterSpacing: "1.5px",
+            }}
+            className="btn btn-large btn-flat waves-effect blue accent-3 white-text d-flex justify-content-center align-items-center"
+          >
+            Teams
+          </Link>
+          <div>
+            <CreateTeamComment onCreate={addComment} match={props.match}/>
+            <TeamCommentTable comments={comments} onDelete={deleteComment} userid={props.auth.user.id}/>
+          </div>
         </>
       )}
     </div>
   );
 };
 
-export default TeamPage;
+TeamPage.propTypes = {
+  auth: PropTypes.object.isRequired
+}; 
+
+function mapStateToProps(state) {
+  return { auth: state.auth };
+} 
+export default connect(
+  mapStateToProps
+)(TeamPage);
+

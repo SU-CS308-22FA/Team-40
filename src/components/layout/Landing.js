@@ -1,8 +1,15 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
 
 class Landing extends Component {
   render() {
+    const { user } = this.props.auth;
+    var name = "You are not logged in";
+    if (user.name != null) {
+      name = user.name;
+    }
     return (
       <div style={{ height: "75vh" }} className="container valign-wrapper d-flex justify-content-center ">
         <div className="row">
@@ -10,6 +17,9 @@ class Landing extends Component {
             <h4 >
               <i className="material-icons">sports_soccer</i>
              <b> TPIBS</b> Turkish Players Incentive Bonus System
+            </h4>
+            <h4 >
+              Hello! {name} 
             </h4>
             <p className="flow-text grey-text text-darken-1">
               See the stats of Turkish players in the Super Lig and compare them
@@ -76,4 +86,13 @@ class Landing extends Component {
   }
 }
 
-export default Landing;
+Landing.propTypes = {
+  auth: PropTypes.object.isRequired
+}; 
+
+function mapStateToProps(state) {
+  return { auth: state.auth };
+} 
+export default connect(
+  mapStateToProps
+)(Landing);

@@ -60,11 +60,13 @@ export default class PlayerList extends Component {
         dataField: "statistics[0].team.name",
         text: "Club",
         sort: true,
+        filter: textFilter(),
       },
       {
         dataField: "player.age",
         text: "Age",
         sort: true,
+        filter: textFilter(),
       },
       {
         dataField: "player.nationality",
@@ -76,6 +78,7 @@ export default class PlayerList extends Component {
         dataField: "statistics[0].games.position",
         text: "Position",
         sort: true,
+        filter: textFilter(),
       },
       {
         dataField: "statistics[0].cards.yellow",
