@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 function CreateTeamComment(props) {
     const { onCreate } = props
     var uid = "1";
-    var uname = "You are not logged in"
+    var uname = "Anonymous"
     if(props.auth.user.name){
         uname = props.auth.user.name;
         uid = props.auth.user.id;
@@ -12,7 +12,8 @@ function CreateTeamComment(props) {
     const [comment, setComment] = useState({
         userid: uid,
         comtext: "",
-        teamid: props.match.params.teamid
+        teamid: props.match.params.teamid,
+        username: uname
     })
     const onChange = (e) => {
         setComment({
