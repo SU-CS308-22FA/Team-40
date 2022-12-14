@@ -29,6 +29,12 @@ export default class TeamList extends Component {
         console.log(error);
       })
   }
+  /**
+   * @author Batuhan Karakadioglu
+   * Gets the data from the backend teams collection, final column has a button to go to the dynamic page of the team.
+   * Logos are presented by changing the innerHTML in componentDidMount()
+   * @returns A table that has team data in it with the logo, name, found date and stadium data
+   */
   render() {
     const columns = [
       {

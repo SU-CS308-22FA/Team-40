@@ -7,7 +7,8 @@ import { postTeamCommentsAPI, getSingleTeamCommentsAPI, deleteTeamCommentsAPI  }
 import CreateTeamComment from './CreateTeamComment';
 import TeamCommentTable from "./TeamCommentTable";
 /**
- * Exporting team page component to create the a profile page for each team
+ * @author Batuhan Karakadioglu
+ * Exporting team page component to create the a profile page for each team, also has commenting features such as add comment and delete comment
  * @param {*} props auth brings the jwt token info, username and userid, match brings the team data
  * @returns Exporting TeamPage component
  */
@@ -21,6 +22,11 @@ const TeamPage = (props) => {
     getSingleTeamCommentsAPI(teamid).then(comments => setComments(comments))
   }, [teamid]);
 
+  /**
+   * @author Batuhan Karakadioglu
+   * Gets the comment in useState then add comment by posting to the api, then set comments in the useState to the current one
+   * @param {*} comment
+   */
   const addComment = (comment) => {
     postTeamCommentsAPI(comment).then(data => {
       setComments([...comments, data])
