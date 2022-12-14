@@ -5,6 +5,14 @@ export async function getTeamCommentsAPI(){
     .then(data => data)
     .catch(e => console.log(e))
 }
+
+export async function getSingleTeamCommentsAPI(teamid){
+    return fetch(API_URL+`/getteamcomments/${teamid}`)
+    .then(resp => resp.json())
+    .then(data => data)
+    .catch(e => console.log(e))
+}
+
 export async function postTeamCommentsAPI(comment){
     return fetch(API_URL+'/postteamcomments',{
         method: "POST",
