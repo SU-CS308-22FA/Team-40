@@ -9,12 +9,12 @@ const PlayerPage = ({ match }) => {
   const [data, setData] = useState();
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/players/getplayers/${playerid}`, {})
+    fetch(`https://backend308.onrender.com/api/players/getplayers/${playerid}`, {})
       .then((res) => res.json())
       .then((response) => {
         setData(response);
         setIsLoading(false);
-        console.log(`http://localhost:5000/api/players/getplayers/${playerid}`);
+        console.log(`https://backend308.onrender.com/api/players/getplayers/${playerid}`);
       })
       .catch((error) => console.log(error));
   }, [playerid]);
