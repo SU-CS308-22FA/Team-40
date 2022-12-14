@@ -17,6 +17,7 @@ import TeamList from "./components/TeamListComponents";
 import PlayerList from "./components/PlayerListComponents";
 import TeamPage from "./components/TeamPage";
 import PlayerPage from "./components/PlayerPage";
+import GameList from "./components/GameListComponent";
 import "./App.css";
 
 // Check for token to keep user logged in
@@ -52,6 +53,7 @@ class App extends Component {
             <Route path="/teams/:teamid" component={TeamPage} />
             <Route path="/players/:playerid" component={PlayerPage} />
             <Route exact path="/players" component={PlayerList} />
+            <Route exact path="/games" component={GameList} />
             <Switch>
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
             </Switch>
