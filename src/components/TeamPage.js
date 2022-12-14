@@ -32,12 +32,12 @@ const TeamPage = (props) => {
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState();
   useEffect((props) => {
-    fetch(`http://localhost:5000/api/teams/getteams/${teamid}`, {})
+    fetch(`https://backend308.onrender.com/api/teams/getteams/${teamid}`, {})
       .then((res) => res.json())
       .then((response) => {
         setData(response);
         setIsLoading(false);
-        console.log(`http://localhost:5000/api/teams/getteams/${teamid}`);
+        console.log(`https://backend308.onrender.com/api/teams/getteams/${teamid}`);
         console.log(props);
       })
       .catch((error) => console.log(error));
