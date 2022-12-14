@@ -1,11 +1,8 @@
 import React, { Component } from "react";
 import axios from 'axios';
-//import Table from 'react-bootstrap/Table';
-import TeamTableRow from './TeamTableRow';
 import BootstrapTable from 'react-bootstrap-table-next';
 import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
 import filterFactory, { textFilter } from 'react-bootstrap-table2-filter';
-
 export default class TeamList extends Component {
   constructor(props) {
     super(props)
@@ -26,26 +23,13 @@ export default class TeamList extends Component {
         var table = document.querySelector("#table");
         for(var i = 1; i < table.rows.length;i++){
           table.rows[i].cells[0].innerHTML ="<img src='"+table.rows[i].cells[0].innerHTML+"'/>";
-
         }
       })
-
       .catch((error) => {
         console.log(error);
       })
   }
- 
-  DataTable() {
-    const venueSizeData = [...this.state.teams].sort((a, b) => (a.venue.capacity > b.venue.capacity ? -1 : 1));
-    return venueSizeData.map((res, i) => {
-      return <TeamTableRow obj={res} key={i} />;
-    });
-  }
-
-  
   render() {
-    
-
     const columns = [
       {
         dataField: 'team.logo',
@@ -72,6 +56,16 @@ export default class TeamList extends Component {
       dataField: 'venue.city',
       text: 'City',
       sort: true
+    }, {
+      dataField: 'team.id',
+      text: 'Profile',
+      sort: false,
+      formatter: (rowContent, row) => {
+        var teamLink = "http://localhost:3000/teams/"+ rowContent;
+        return (   
+          <a href={teamLink}>Go to Page</a>
+        )
+      }
     }];
 
     return (<div className="table-wrapper">
