@@ -3,20 +3,32 @@ import { Link } from "react-router-dom";
 import "./TeamPage.css";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { postTeamCommentsAPI } from '../actions/teamCommentActions'
+import { postTeamCommentsAPI, getSingleTeamCommentsAPI, deleteTeamCommentsAPI  } from '../actions/teamCommentActions'
 import CreateTeamComment from './CreateTeamComment';
+import TeamCommentTable from "./TeamCommentTable";
 const TeamPage = (props) => {
   const {
     params: { teamid },
   } = props.match;
 
   const [comments, setComments] = useState([])
+  useEffect(() => {
+    getSingleTeamCommentsAPI(teamid).then(comments => setComments(comments))
+  }, [teamid]);
+
   const addComment = (comment) => {
     postTeamCommentsAPI(comment).then(data => {
       setComments([...comments, data])
     })
   }
 
+  const deleteComment = (id) => {
+    deleteTeamCommentsAPI(id).then(data => {
+      if (data.deletedCount === 1) {
+        setComments(comments.filter(comment => comment._id !== id))
+      }
+    })
+  }
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState();
   useEffect((props) => {
@@ -75,6 +87,7 @@ const TeamPage = (props) => {
           </Link>
           <div>
             <CreateTeamComment onCreate={addComment} match={props.match}/>
+            <TeamCommentTable comments={comments} onDelete={deleteComment} userid={props.auth.user.id}/>
           </div>
         </>
       )}
