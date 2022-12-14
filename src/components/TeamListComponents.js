@@ -61,7 +61,7 @@ export default class TeamList extends Component {
       text: 'Profile',
       sort: false,
       formatter: (rowContent, row) => {
-        var teamLink = "http://localhost:3000/teams/"+ rowContent;
+        var teamLink = "https://cs308team40.netlify.app/teams/"+ rowContent;
         return (   
           <a href={teamLink}>Go to Page</a>
         )

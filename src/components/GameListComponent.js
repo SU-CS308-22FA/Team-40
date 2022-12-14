@@ -18,7 +18,7 @@ export default class GameList extends Component {
   }
   componentDidMount() {
     axios
-      .get("http://localhost:5000/api/games/getgames")
+      .get("https://backend308.onrender.com/api/games/getgames")
       .then((res) => {
         this.setState({
           games: res.data,
