@@ -77,7 +77,21 @@ class Landing extends Component {
               >
                 Players
               </Link>
-            </div>    
+            </div>
+
+            <div className="col s6 d-flex justify-content-center" style={{ margin: "40px 0 0 0" }}>
+              <Link
+                to="/games"
+                style={{
+                  width: "140px",
+                  borderRadius: "3px",
+                  letterSpacing: "1.5px"
+                }}
+                className="btn btn-large waves-effect waves-light hoverable blue accent-3 d-flex justify-content-center align-items-center"
+              >
+                Games
+              </Link>
+              </div>    
 
           </div>
         </div>       
