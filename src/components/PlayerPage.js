@@ -1,6 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./PlayerPage.css";
+
+
+/**
+ * PlayerPage component
+ *
+ * @param {Object} props - The component's props
+ * @param {Object} props.match - The match object from React Router
+ * @param {Object} props.match.params - The URL parameters from the route
+ * @param {string} props.match.params.playerid - The ID of the player
+ * @returns {React.Component} The PlayerPage component
+ */
 const PlayerPage = ({ match }) => {
   const {
     params: { playerid },

@@ -37,6 +37,13 @@ export default class GameList extends Component {
       });
   }
 
+  /**
+   * DataTable component
+   *
+   * @param {Object} state - The component's state
+   * @returns {Array<React.Component>} An array of GameTableRow components
+   */
+
   DataTable() {
     const myData = [...this.state.games];
     return myData.map((res, i) => {
@@ -45,13 +52,11 @@ export default class GameList extends Component {
   }
 
   render() {
-
     return (
       <div className="table-wrapper">
         <Table striped bordered hover>
           <thead>
-            <tr>
-            </tr>
+            <tr></tr>
           </thead>
           <tbody>{this.DataTable()}</tbody>
         </Table>
