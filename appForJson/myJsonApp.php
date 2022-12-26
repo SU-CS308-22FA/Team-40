@@ -21,8 +21,8 @@ function call_api($endpoint, $params = []) {
       ),
     ));
     $response = curl_exec($curl);
-    file_put_contents("fixtures.json", $response, FILE_APPEND);
     $arr = json_decode($response, TRUE);
+    file_put_contents("fixtures.json", trim(json_encode($arr['response']),'[]'), FILE_APPEND);
     print_r($arr['response']);
     curl_close($curl);
     return $response;
@@ -56,7 +56,7 @@ function call_player_api($endpoint, $params = []) {
     //$response = json_decode($response);
     $arr = json_decode($response, TRUE);
    
-    file_put_contents("teams2.json", trim(json_encode($arr['response']),'[]').',', FILE_APPEND);
+    file_put_contents("players.json", trim(json_encode($arr['response']),'[]').',', FILE_APPEND);
     curl_close($curl);
     sleep(12);
     return $response;
@@ -78,11 +78,11 @@ function players_data($league, $season, $page = 1, $players_data = []) {
     return $players_data;
 }
 
-//Run this to get all the teams
-#$teams = call_api('teams', ['league' => 203, 'season' => 2022]);
+//Run this to get all the teams dont forget to add brackets at the end and the start to the final json file
+$teams = call_api('teams', ['league' => 203, 'season' => 2022]);
 
-//Run this to get the last 9 fixtures
-$fixtures = call_api('fixtures', ['league' => 203, 'last' => 9]);
+//Run this to get the last 9 fixtures dont forget to add brackets at the end and the start to the final json file
+#$fixtures = call_api('fixtures', ['league' => 203, 'last' => 9]);
 
 
 /* 
