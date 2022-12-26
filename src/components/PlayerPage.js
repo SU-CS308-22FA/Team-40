@@ -1,10 +1,34 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./PlayerPage.css";
-const PlayerPage = ({ match }) => {
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { postPlayerCommentsAPI, getSinglePlayerCommentsAPI, deletePlayerCommentsAPI  } from '../actions/playerCommentActions'
+import CreatePlayerComment from './CreatePlayerComment';
+import PlayerCommentTable from "./PlayerCommentTable";
+const PlayerPage = (props) => {
   const {
     params: { playerid },
-  } = match;
+  } = props.match;
+  const [comments, setComments] = useState([])
+  useEffect(() => {
+    getSinglePlayerCommentsAPI(playerid).then(comments => setComments(comments))
+  }, [playerid]);
+
+  const addComment = (comment) => {
+    postPlayerCommentsAPI(comment).then(data => {
+      setComments([...comments, data])
+    })
+  }
+
+  const deleteComment = (id) => {
+    deletePlayerCommentsAPI(id).then(data => {
+      if (data.deletedCount === 1) {
+        setComments(comments.filter(comment => comment._id !== id))
+      }
+    })
+  }
+
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState();
 
@@ -19,6 +43,10 @@ const PlayerPage = ({ match }) => {
       .catch((error) => console.log(error));
   }, [playerid]);
 
+  var name = "You are not logged in";
+    if (props.auth.user.name!= null) {
+      name = props.auth.user.name;
+    }  
   return (
     //lhs: player name,player photo
     //rhs: player rating, player team name
@@ -26,6 +54,7 @@ const PlayerPage = ({ match }) => {
     <>
       {!isLoading && (
         <>
+          <h1>Current User: {name}</h1>
           <center>
             <table>
               <tr>
@@ -148,9 +177,22 @@ const PlayerPage = ({ match }) => {
               </tr>
             </table>
           </center>
+          <div>
+            <CreatePlayerComment onCreate={addComment} match={props.match}/>
+            <PlayerCommentTable comments={comments} onDelete={deleteComment} userid={props.auth.user.id}/>
+          </div>
         </>
       )}{" "}
     </>
   );
 };
-export default PlayerPage;
+PlayerPage.propTypes = {
+  auth: PropTypes.object.isRequired
+}; 
+
+function mapStateToProps(state) {
+  return { auth: state.auth };
+} 
+export default connect(
+  mapStateToProps
+)(PlayerPage);
