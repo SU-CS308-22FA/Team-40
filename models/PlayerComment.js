@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const TeamCommentSchema = mongoose.Schema({
+const PlayerCommentSchema = mongoose.Schema({
     userid:{
         type: String,
     },
@@ -7,11 +7,11 @@ const TeamCommentSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    teamid:{
+    playerid:{
         type: String,
     },
     username:{
         type: String,
     }
 })
-module.exports = TeamComment = mongoose.model('teamComments', TeamCommentSchema)
+module.exports = PlayerComment = mongoose.model('playerComments', PlayerCommentSchema)
