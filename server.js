@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const passport = require("passport");
 
+const fixtures = require("./routes/api/fixtures");
 const users = require("./routes/api/users");
 const teams = require("./routes/api/teams");
 const players = require("./routes/api/players");
@@ -41,6 +42,7 @@ require("./config/passport")(passport);
 
 // Routes
 app.use("/api/teams", teams);
+app.use("/api/fixtures", fixtures);
 app.use("/api/users", users);
 app.use("/api/players", players);
 app.use("/api/games", games);
