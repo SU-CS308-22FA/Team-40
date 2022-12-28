@@ -4,7 +4,7 @@ import axios from "axios";
 import Table from "react-bootstrap/Table";
 import GameTableRow from "./GameTableRow";
 import "react-bootstrap-table-next/dist/react-bootstrap-table2.min.css";
-
+import FixtureList from "./FixtureListComponents";
 export default class GameList extends Component {
   constructor(props) {
     super(props);
@@ -55,6 +55,7 @@ export default class GameList extends Component {
           </thead>
           <tbody>{this.DataTable()}</tbody>
         </Table>
+        <FixtureList />
       </div>
     );
   }
