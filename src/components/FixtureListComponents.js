@@ -16,10 +16,10 @@ export default class FixtureList extends Component {
         this.setState({
           fixtures: res.data
         });
-        var table = document.querySelector("#table");
-        for(var i = 1; i < table.rows.length;i++){
-          table.rows[i].cells[0].innerHTML ="<img src='"+table.rows[i].cells[0].innerHTML+"'/>";
-          table.rows[i].cells[5].innerHTML ="<img src='"+table.rows[i].cells[5].innerHTML+"'/>";
+        var ftable = document.querySelector("#fixturetable");
+        for(var i = 1; i < ftable.rows.length;i++){
+          ftable.rows[i].cells[0].innerHTML ="<img src='"+ftable.rows[i].cells[0].innerHTML+"'/>";
+          ftable.rows[i].cells[5].innerHTML ="<img src='"+ftable.rows[i].cells[5].innerHTML+"'/>";
         }
       })
       .catch((error) => {
@@ -65,22 +65,22 @@ export default class FixtureList extends Component {
         text: 'Date',
         sort: true
     },
-    /*{
-       dataField: 'team.id',
-      text: 'Profile',
+    {
+       dataField: 'teams.home.id',
+      text: 'Match Page',
       sort: false,
       formatter: (rowContent, row) => {
-        var teamLink = "https://cs308team40.netlify.app/fixtures/"+ rowContent;
+        var statisticLink = "https://cs308team40.netlify.app/statistics/"+ rowContent;
         return (   
-          <a href={teamLink}>Go to Page</a>
+          <a href={statisticLink}>Detailed Statistics</a>
         )
       } 
-    }*/
+    }
     ];
 
     return (<div className="table-wrapper">
       
-      <BootstrapTable keyField='teams.home.logo' data={ this.state.fixtures } columns={ columns } filter={ filterFactory() } id="table"  />
+      <BootstrapTable keyField='teams.home.logo' data={ this.state.fixtures } columns={ columns } filter={ filterFactory() } id="fixturetable"  />
     </div>);
   }
 }

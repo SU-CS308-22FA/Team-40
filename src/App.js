@@ -17,6 +17,7 @@ import TeamList from "./components/TeamListComponents";
 import PlayerList from "./components/PlayerListComponents";
 import TeamPage from "./components/TeamPage";
 import PlayerPage from "./components/PlayerPage";
+import StatisticPage from "./components/StatisticPage";
 import GameList from "./components/GameListComponent";
 import "./App.css";
 
@@ -52,6 +53,7 @@ class App extends Component {
             <Route exact path="/teams" component={TeamList} />
             <Route path="/teams/:teamid" component={TeamPage} />
             <Route path="/players/:playerid" component={PlayerPage} />
+            <Route path="/statistics/:statisticid" component={StatisticPage} />
             <Route exact path="/players" component={PlayerList} />
             <Route exact path="/games" component={GameList} />
             <Switch>
