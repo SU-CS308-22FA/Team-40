@@ -1,20 +1,33 @@
 import React, { Component } from "react";
 import axios from "axios";
+import Cookies from "js-cookie";
 
 export default class CandidateTableRow extends Component {
   constructor(props) {
     super(props);
     this.state = {
       votes: this.props.obj.candidate.votes,
+      voted: false,
+      message: ""
     };
+  }
+
+  componentDidMount() {
+    // check if the user has already voted by checking for the existence of a cookie
+    const voted = Cookies.get("voted");
+    if (voted) {
+      this.setState({ voted: true, message: "VOTED" });
+    }
   }
 
   handleVote = () => {
     console.log(this.props)
     axios
-      .post(`http://localhost:5000/api/candidates/vote/${this.props.obj._id}`)
+      .post(`https://backend308.onrender.com/api/candidates/vote/${this.props.obj._id}`)
       .then((response) => {
-        this.setState({ votes: response.data.votes });
+        this.setState({ votes: response.data.votes, voted: true, message: "VOTED" });
+        // set a cookie to indicate that the user has already voted
+        Cookies.set("voted", true);
       })
       .catch((error) => {
         console.error(error);
@@ -22,6 +35,7 @@ export default class CandidateTableRow extends Component {
   };
 
   render() {
+    var playerLink = "https://cs308team40.netlify.app/players/" + this.props.obj.candidate.id;
     return (
       <tr>
         <td>
@@ -40,7 +54,7 @@ export default class CandidateTableRow extends Component {
               <tr>
                 <td>
                   <center>
-                    <h4>{this.props.obj.candidate.name}</h4>
+                    <h4><a href= {playerLink}> {this.props.obj.candidate.name}</a></h4>
                   </center>
                 </td>
               </tr>
@@ -51,9 +65,10 @@ export default class CandidateTableRow extends Component {
                       <center>
                         <button
                           onClick={this.handleVote}
-                          className="btn btn-primary"
+                          className={this.state.voted ? "btn btn-secondary" : "btn btn-primary"}
+                          disabled={this.state.voted}
                         >
-                          Vote
+                          {this.state.message || "Vote"}
                         </button>
                       </center>
                     </td>
@@ -73,3 +88,4 @@ export default class CandidateTableRow extends Component {
     );
   }
 }
+

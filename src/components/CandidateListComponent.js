@@ -16,7 +16,7 @@ export default class CandidateList extends Component {
   }
   componentDidMount() {
     axios
-      .get("http://localhost:5000/api/candidates/getcandidates")
+      .get("https://backend308.onrender.com/api/candidates/getcandidates")
       .then((res) => {
         this.setState({
           candidates: res.data,
