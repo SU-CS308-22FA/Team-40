@@ -140,36 +140,7 @@ const PlayerPage = (props) => {
               </tr>
             </table>
           </center>
-          <center>
-            <table>
-              <tr>
-                <td>
-                  <center>
-                    <div className="col s6 d-flex justify-content-center">
-                      <Link
-                        to="/"
-                        style={{
-                          width: "140px",
-                          borderRadius: "3px",
-                          letterSpacing: "1.5px",
-                        }}
-                        className="btn btn-large btn-flat waves-effect blue accent-3 white-text d-flex justify-content-center align-items-center"
-                      >
-                        Home
-                      </Link>
-                    </div>
-                  </center>
-                </td>
-                <td>
-                  <center>
-                    <div className="col s6 d-flex justify-content-center">
-                      
-                    </div>
-                  </center>
-                </td>
-              </tr>
-            </table>
-          </center>
+          
           <div>
             <h1>Comments Section</h1>
             <PlayerCommentTable comments={comments} onDelete={deleteComment} userid={props.auth.user.id}/>
