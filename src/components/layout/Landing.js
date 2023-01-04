@@ -91,7 +91,36 @@ class Landing extends Component {
               >
                 Games
               </Link>
-              </div>    
+              </div> 
+
+              <div className="col s6 d-flex justify-content-center" style={{ margin: "40px 0 0 0" }}>
+              <Link
+                to="/candidates"
+                style={{
+                  width: "140px",
+                  borderRadius: "3px",
+                  letterSpacing: "1.5px"
+                }}
+                className="btn btn-large waves-effect waves-light hoverable blue accent-3 d-flex justify-content-center align-items-center"
+              >
+                VOTE
+              </Link>
+              </div>
+              <center>
+              <div className="col s6 d-flex justify-content-center" style={{ margin: "40px 0 0 0" }}>
+              <Link
+                to="/supportpage"
+                style={{
+                  width: "140px",
+                  borderRadius: "3px",
+                  letterSpacing: "1.5px"
+                }}
+                className="btn btn-large waves-effect waves-light hoverable blue accent-3 d-flex justify-content-center align-items-center"
+              >
+                Support
+              </Link>
+              </div>   
+              </center>    
 
           </div>
         </div>       
