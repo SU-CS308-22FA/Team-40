@@ -140,7 +140,8 @@ const PlayerPage = (props) => {
               </tr>
             </table>
           </center>
-          
+          <br></br>
+          <br></br>
           <div>
             <h1>Comments Section</h1>
             <PlayerCommentTable comments={comments} onDelete={deleteComment} userid={props.auth.user.id}/>
