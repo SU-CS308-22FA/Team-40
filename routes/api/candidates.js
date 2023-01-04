@@ -9,9 +9,7 @@ router.get('/getcandidates', (req, resp)=>{
         resp.json({message : e})
     })
 })
-
-
-  
+ 
   router.post("/vote/:id", (req, res) => {
     Candidate.findById(req.params.id)
       .then((candidate) => {
@@ -22,6 +20,8 @@ router.get('/getcandidates', (req, resp)=>{
         res.status(500).json({ error: error.message });
       });
   });
+
+  
   
   module.exports = router;
   
