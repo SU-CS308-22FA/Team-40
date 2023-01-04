@@ -3,14 +3,17 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const passport = require("passport");
 
+
 const fixtures = require("./routes/api/fixtures");
 const users = require("./routes/api/users");
 const teams = require("./routes/api/teams");
 const players = require("./routes/api/players");
 const games = require("./routes/api/games");
+const candidates = require("./routes/api/candidates");
 const teamcomments = require("./routes/api/teamcomments");
 const playercomments = require("./routes/api/playercomments");
 const statistics = require("./routes/api/statistics");
+
 
 const app = express();
 var cors = require('cors');
@@ -47,9 +50,11 @@ app.use("/api/fixtures", fixtures);
 app.use("/api/users", users);
 app.use("/api/players", players);
 app.use("/api/games", games);
+app.use("/api/candidates", candidates);
 app.use("/api/teamcomments", teamcomments);
 app.use("/api/playercomments", playercomments);
 app.use("/api/statistics", statistics);
+
 
 const port = process.env.PORT || 5000;
 
