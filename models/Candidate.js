@@ -15,9 +15,10 @@ const CandidateSchema = mongoose.Schema({
 });
 
 CandidateSchema.methods.vote = function () {
-  this.votes += 1;
-  return this.save();
+  this.candidate.votes += 1;
   console.log("Vote registered");
+  return this.save();
+  
 };
 
 module.exports = Candidate = mongoose.model("candidates", CandidateSchema);
