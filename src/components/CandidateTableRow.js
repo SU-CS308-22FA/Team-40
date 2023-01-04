@@ -10,6 +10,7 @@ export default class CandidateTableRow extends Component {
   }
 
   handleVote = () => {
+    console.log(this.props)
     axios
       .post(`http://localhost:5000/api/candidates/vote/${this.props.obj._id}`)
       .then((response) => {
