@@ -106,7 +106,8 @@ export default class PlayerList extends Component {
         text: "Profile",
         sort: false,
         formatter: (rowContent, row) => {
-          var playerLink = "https://cs308team40.netlify.app/players/" + rowContent;
+          //var playerLink = "https://cs308team40.netlify.app/players/" + rowContent;
+          var playerLink = "http://localhost:3000/players/" + rowContent;
           return <a href={playerLink}>Go to Page</a>;
         },
       },

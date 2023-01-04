@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import "./TeamPage.css";
+//import "./TeamPage.css";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { postTeamCommentsAPI, getSingleTeamCommentsAPI, deleteTeamCommentsAPI  } from '../actions/teamCommentActions'
@@ -49,6 +49,7 @@ const TeamPage = (props) => {
   return (
     
     <div className="team-page">
+      <center>
       {!isLoading && (
         <>
           <h1>Current User: {name}</h1>
@@ -63,6 +64,13 @@ const TeamPage = (props) => {
           <h2>Capacity: {data.venue.capacity}</h2>
           <h2>Address: {data.venue.address}</h2>
           </div>
+          
+          <div>
+            <br></br>
+            <h1>Comments Section</h1>
+            <TeamCommentTable comments={comments} onDelete={deleteComment} userid={props.auth.user.id}/>
+            <CreateTeamComment onCreate={addComment} match={props.match}/>
+          </div>
           <Link
             to="/"
             style={{
@@ -74,6 +82,7 @@ const TeamPage = (props) => {
           >
             Home
           </Link>
+          <br></br>
           <Link
             to="/teams"
             style={{
@@ -85,12 +94,9 @@ const TeamPage = (props) => {
           >
             Teams
           </Link>
-          <div>
-            <CreateTeamComment onCreate={addComment} match={props.match}/>
-            <TeamCommentTable comments={comments} onDelete={deleteComment} userid={props.auth.user.id}/>
-          </div>
         </>
       )}
+      </center>
     </div>
   );
 };

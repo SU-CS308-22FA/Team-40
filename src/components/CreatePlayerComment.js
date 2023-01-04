@@ -30,15 +30,15 @@ function CreatePlayerComment(props) {
     return (
         <Fragment>
                 <form onSubmit={saveComment}>
-                    <h2 className="text-center m-3">Hello! {uname} Comment</h2>
+                    <h2 className="text-center m-3">Hello! {uname} Comment Here</h2>
                     <div className="form-row d-flex justify-content-center">
                         <div className="col-5 d-flex justify-content-center m-1">
                             <input type="text" className="form-control" 
-                                name = "comtext" placeholder="Comment here"
+                                name = "comtext"
                                 onChange={(e) => onChange(e)}/>
                         </div>
                         <button className='btn btn-primary col-2 d-flex justify-content-center m-1' 
-                            type='submit'>Add</button>
+                            type='submit'>Send</button>
                     </div>
                 </form>
         </Fragment>

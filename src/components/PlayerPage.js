@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import "./PlayerPage.css";
+//import "./PlayerPage.css";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { postPlayerCommentsAPI, getSinglePlayerCommentsAPI, deletePlayerCommentsAPI  } from '../actions/playerCommentActions'
@@ -51,7 +51,8 @@ const PlayerPage = (props) => {
     //lhs: player name,player photo
     //rhs: player rating, player team name
     //bottom: player stats (bootstrap table with filtered to only show the player)
-    <>
+    <div>
+      <center>
       {!isLoading && (
         <>
           <h1>Current User: {name}</h1>
@@ -96,7 +97,7 @@ const PlayerPage = (props) => {
                 <th>Nation</th>
                 <th>Lineups</th>
                 <th>Minutes</th>
-                <th>Number</th>
+          
                 <th>Position</th>
                 
               </tr>
@@ -105,7 +106,7 @@ const PlayerPage = (props) => {
                 <td>{data.player.nationality}</td>
                 <td>{data.statistics[0].games.lineups}</td>
                 <td>{data.statistics[0].games.minutes}</td>
-                <td>{data.statistics[0].games.number}</td>
+                
                 <td>{data.statistics[0].games.position}</td>
                 
               </tr>
@@ -118,18 +119,20 @@ const PlayerPage = (props) => {
           <center>
             <table>
               <tr>
-                <th>Appearances</th>
+                
                 <th>Goals Scored</th>
                 <th>Key Passes</th>
+                <th>Tackles</th>
                 <th>Duels Won</th>
                 <th>Successful Dribbles</th>
                 <th>Fouls Committed</th>
                 <th>Rating</th>
               </tr>
               <tr>
-              <td>{data.statistics[0].games.appearances}</td>
+                
                 <td>{data.statistics[0].goals.total}</td>
                 <td>{data.statistics[0].passes.key}</td>
+                <td>{data.statistics[0].tackles.total}</td>
                 <td>{data.statistics[0].duels.won}</td>
                 <td>{data.statistics[0].dribbles.success}</td>
                 <td>{data.statistics[0].fouls.committed}</td>
@@ -160,17 +163,7 @@ const PlayerPage = (props) => {
                 <td>
                   <center>
                     <div className="col s6 d-flex justify-content-center">
-                      <Link
-                        to="/players"
-                        style={{
-                          width: "140px",
-                          borderRadius: "3px",
-                          letterSpacing: "1.5px",
-                        }}
-                        className="btn btn-large btn-flat waves-effect blue accent-3 white-text d-flex justify-content-center align-items-center"
-                      >
-                        Players
-                      </Link>
+                      
                     </div>
                   </center>
                 </td>
@@ -178,12 +171,38 @@ const PlayerPage = (props) => {
             </table>
           </center>
           <div>
-            <CreatePlayerComment onCreate={addComment} match={props.match}/>
+            <h1>Comments Section</h1>
             <PlayerCommentTable comments={comments} onDelete={deleteComment} userid={props.auth.user.id}/>
+            <br></br>
+            <CreatePlayerComment onCreate={addComment} match={props.match}/>
           </div>
+          <Link
+            to="/players"
+            style={{
+              width: "140px",
+              borderRadius: "3px",
+              letterSpacing: "1.5px",
+            }}
+            className="btn btn-large btn-flat waves-effect blue accent-3 white-text d-flex justify-content-center align-items-center"
+          >
+            Players
+          </Link>
+          <br></br>
+          <Link
+            to="/"
+            style={{
+              width: "140px",
+              borderRadius: "3px",
+              letterSpacing: "1.5px",
+            }}
+            className="btn btn-large btn-flat waves-effect blue accent-3 white-text d-flex justify-content-center align-items-center"
+          >
+            Home
+          </Link>
         </>
-      )}{" "}
-    </>
+      )}
+      </center>
+    </div>
   );
 };
 PlayerPage.propTypes = {
